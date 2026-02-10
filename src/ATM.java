@@ -2,36 +2,51 @@ import java.util.Scanner;
 
 public class ATM {
     public static void main(String[] args) {
-        // Bill 1000 лв. amd PIN "1234"
         Account myAccount = new Account(1000.0, "1234");
         Scanner scanner = new Scanner(System.in);
 
         System.out.println(" Welcome to Java ATM ");
-        System.out.print("PIN: ");
+        System.out.print("Enter PIN: ");
         String enteredPin = scanner.nextLine();
 
         if (myAccount.checkPin(enteredPin)) {
-            System.out.println("\nSuccessful Login!");
-            System.out.println("1. Balance | 2. Withdrawal | 3. Deposit");
-            System.out.print("Chose option: ");
+            boolean running = true;
 
-            int choice = scanner.nextInt();
+            while (running) {
+                System.out.println("\nMAIN MENU: ");
+                System.out.println("1. Check Balance");
+                System.out.println("2. Withdraw Cash");
+                System.out.println("3. Deposit Funds");
+                System.out.println("4. Exit");
+                System.out.print("Select an option: ");
 
-            if (choice == 1) {
-                System.out.println("Current balance: " + myAccount.getBalance() + " лв.");
-            } else if (choice == 2) {
-                System.out.print("Withdrawal amount: ");
-                double amount = scanner.nextDouble();
-                myAccount.withdraw(amount);
-            } else if (choice == 3) {
-                System.out.print("Deposit amount: ");
-                double amount = scanner.nextDouble();
-                myAccount.deposit(amount);
+                int choice = scanner.nextInt();
+
+                switch (choice) {
+                    case 1:
+                        System.out.println("Current balance: $" + myAccount.getBalance());
+                        break;
+                    case 2:
+                        System.out.print("Enter amount to withdraw: ");
+                        double withdrawAmount = scanner.nextDouble();
+                        myAccount.withdraw(withdrawAmount);
+                        break;
+                    case 3:
+                        System.out.print("Enter amount to deposit: ");
+                        double depositAmount = scanner.nextDouble();
+                        myAccount.deposit(depositAmount);
+                        break;
+                    case 4:
+                        running = false;
+                        System.out.println("Thank you for using our services. Goodbye!");
+                        break;
+                    default:
+                        System.out.println("Invalid option. Please try again.");
+                }
             }
         } else {
-            System.out.println("Wrong PIN! Access denied.");
+            System.out.println("Access Denied: Wrong PIN!");
         }
-
         scanner.close();
     }
 }
