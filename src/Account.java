@@ -14,16 +14,16 @@ public class Account {
     public void deposit(double amount) {
         if (amount > 0) {
             balance += amount;
-            System.out.println("Успешно внесохте: " + amount + " лв.");
+            System.out.println("Successfully deposited: $" + amount);
         }
     }
 
     public void withdraw(double amount) {
         if (amount > 0 && amount <= balance) {
             balance -= amount;
-            System.out.println("Успешно изтеглихте: " + amount + " лв.");
+            System.out.println("Successfully withdrawn: $" + amount);
         } else {
-            System.out.println("Грешка: Недостатъчна наличност.");
+            System.out.println("Error: Insufficient funds or invalid amount.");
         }
     }
 
