@@ -13,7 +13,7 @@ public class ATM {
             boolean running = true;
 
             while (running) {
-                System.out.println("\nMAIN MENU: ");
+                System.out.println("\n--- MAIN MENU ---");
                 System.out.println("1. Check Balance");
                 System.out.println("2. Withdraw Cash");
                 System.out.println("3. Deposit Funds");
