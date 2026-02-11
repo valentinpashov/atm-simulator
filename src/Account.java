@@ -27,6 +27,15 @@ public class Account {
         }
     }
 
+    public void changePin(String newPin){
+        if(newPin.length() == 4){
+            this.pin = newPin;
+            System.out.println("PIN successfully changed!");
+        }else{
+            System.out.println("Error: PIN must be exactly 4 digits.");
+        }
+    }
+
     public double getBalance() {
         return balance;
     }
