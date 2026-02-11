@@ -17,8 +17,9 @@ public class ATM {
                 System.out.println("1. Check Balance");
                 System.out.println("2. Withdraw Cash");
                 System.out.println("3. Deposit Funds");
-                System.out.println("4. Exit");
+                System.out.println("4. Transaction History");
                 System.out.println("5. Change PIN");
+                System.out.println("6. Exit");
                 System.out.print("Select an option: ");
 
                 int choice = scanner.nextInt();
@@ -38,8 +39,7 @@ public class ATM {
                         myAccount.deposit(depositAmount);
                         break;
                     case 4:
-                        running = false;
-                        System.out.println("Thank you for using our services. Goodbye!");
+                        myAccount.printHistory();
                         break;
                     case 5:
                         System.out.println("Enter your new 4-digit PIN: ");
@@ -48,6 +48,11 @@ public class ATM {
 
                         myAccount.changePin(newPin);
                         break;
+                    case 6:
+                        running = false;
+                        System.out.println("Thank you for using our services. Goodbye!");
+                        break;
+
                     default:
                         System.out.println("Invalid option. Please try again.");
                 }
