@@ -13,11 +13,12 @@ public class ATM {
             boolean running = true;
 
             while (running) {
-                System.out.println("\n--- MAIN MENU ---");
+                System.out.println("\nMAIN MENU ");
                 System.out.println("1. Check Balance");
                 System.out.println("2. Withdraw Cash");
                 System.out.println("3. Deposit Funds");
                 System.out.println("4. Exit");
+                System.out.println("5. Change PIN");
                 System.out.print("Select an option: ");
 
                 int choice = scanner.nextInt();
@@ -39,6 +40,13 @@ public class ATM {
                     case 4:
                         running = false;
                         System.out.println("Thank you for using our services. Goodbye!");
+                        break;
+                    case 5:
+                        System.out.println("Enter your new 4-digit PIN: ");
+                        scanner.nextLine();
+                        String newPin = scanner.nextLine();
+
+                        myAccount.changePin(newPin);
                         break;
                     default:
                         System.out.println("Invalid option. Please try again.");
