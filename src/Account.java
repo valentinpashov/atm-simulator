@@ -1,6 +1,9 @@
+import java.util.ArrayList;
+
 public class Account {
     private double balance;
     private String pin;
+    private ArrayList<String> history = new ArrayList<>();
 
     public Account(double initialBalance, String initialPin) {
         this.balance = initialBalance;
@@ -14,7 +17,7 @@ public class Account {
     public void deposit(double amount) {
         if (amount > 0) {
             balance += amount;
-            System.out.println("Successfully deposited: $" + amount);
+            addLog("Deposited: $" + amount);
         }
     }
 
@@ -39,4 +42,23 @@ public class Account {
     public double getBalance() {
         return balance;
     }
+
+    public void addLog(String message){
+        history.add(message);
+    }
+
+    public void printHistory(){
+        System.out.println("Transaction History");
+        if(history.isEmpty()){
+            System.out.println("No transactions yet.");
+        }else {
+            for(String record: history){
+                System.out.println(record);
+            }
+        }
+    }
+
+
+
+
 }
